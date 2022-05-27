@@ -12,6 +12,12 @@ def index
 end 
 
 def show
+  the_name = params.fetch("path_name")
+
+  matching_users = User.where({ :username => the_name })
+
+  @the_user = matching_users.at(0)
+
   render({ :template => "user_authentication/show.html.erb" })
 end 
 
@@ -55,8 +61,6 @@ end
     @user.email = params.fetch("query_email")
     @user.password = params.fetch("query_password")
     @user.password_confirmation = params.fetch("query_password_confirmation")
-    @user.comments_count = params.fetch("query_comments_count")
-    @user.likes_count = params.fetch("query_likes_count")
     @user.private = params.fetch("query_private", false)
     @user.username = params.fetch("query_username")
 
