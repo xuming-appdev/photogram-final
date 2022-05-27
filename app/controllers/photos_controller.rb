@@ -23,7 +23,7 @@ class PhotosController < ApplicationController
   
     the_photo.image = params.fetch("query_image")
     
-    the_photo.owner_id = params.fetch("query_owner_id")
+    the_photo.owner_id = session[:user_id]
 
     if the_photo.valid?
       the_photo.save
