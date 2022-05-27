@@ -11,6 +11,10 @@ def index
   render({ :template => "user_authentication/index.html.erb" })
 end 
 
+def show
+  render({ :template => "user_authentication/show.html.erb" })
+end 
+
 
   def sign_in_form
     render({ :template => "user_authentication/sign_in.html.erb" })

@@ -13,6 +13,8 @@
           Private?
         </th>
 
+<th>
+        </th>
         <th>
         </th>
       </tr>
@@ -23,10 +25,18 @@
           <%= a_user.username %>
         </td>
 
-
          <td>
-          <%= a_user.private %>
+
+         <% if a_user.private==true%>
+         Yes
+<%else%>
+No
+<%end%>
         </td>
+<td>
+Follow or not
+</td>
+
 
         <td>
           <a href="/users/<%= a_user.id %>">
@@ -35,7 +45,5 @@
         </td>
       </tr>
       <% end %>
-
-
 
 </hr>
