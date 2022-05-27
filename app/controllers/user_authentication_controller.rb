@@ -32,6 +32,29 @@ def liked_photos
   render({ :template => "user_authentication/liked_photos.html.erb" })
 end 
 
+def feed
+  the_name = params.fetch("path_name")
+
+  matching_users = User.where({ :username => the_name })
+
+  @the_user = matching_users.at(0)
+
+
+  render({ :template => "user_authentication/feed.html.erb" })
+end 
+
+
+def discover
+  the_name = params.fetch("path_name")
+
+  matching_users = User.where({ :username => the_name })
+
+  @the_user = matching_users.at(0)
+
+
+  render({ :template => "user_authentication/discover.html.erb" })
+end 
+
 
   def sign_in_form
     render({ :template => "user_authentication/sign_in.html.erb" })
