@@ -53,19 +53,22 @@
         Fans
       </dt>
       <dd>
-        ?????
+        <%@the_photo.fans.each do |a_fan| %>
+        <%=a_fan.username%>
+        <%end%>
       </dd>
 
-  <dt>
-        Add a fan
-      </dt>
-      <dd>
-        ?????
-      </dd>
+ <dt>Add a fan</dt>
+  <dd>
 
-      <button>
-Like
-      </button>
+    <form action="/insert_like" method="post">
+      <input type="hidden" value="<%@the_photo.id%>" name="query_photo_id">
+      <input type="hidden" value="777" name="query_fan_id">
+      <button>Like</button>
+    </form>
+  </dd>
+
+
 
 <dt>
 Edit photo

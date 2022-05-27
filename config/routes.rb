@@ -62,7 +62,8 @@ Rails.application.routes.draw do
 
   get("/users", { :controller => "user_authentication", :action => "index" })     
 
-get("/users/:path_name", { :controller => "user_authentication", :action => "show" })     
+get("/users/:path_name", { :controller => "user_authentication", :action => "show" })  
+get("/users/:path_name/liked_photos", { :controller => "user_authentication", :action => "liked_photos" })  
   # SIGN UP FORM
   get("/user_sign_up", { :controller => "user_authentication", :action => "sign_up_form" })        
   # CREATE RECORD

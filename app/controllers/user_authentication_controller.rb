@@ -21,6 +21,17 @@ def show
   render({ :template => "user_authentication/show.html.erb" })
 end 
 
+def liked_photos
+  the_name = params.fetch("path_name")
+
+  matching_users = User.where({ :username => the_name })
+
+  @the_user = matching_users.at(0)
+
+
+  render({ :template => "user_authentication/liked_photos.html.erb" })
+end 
+
 
   def sign_in_form
     render({ :template => "user_authentication/sign_in.html.erb" })
