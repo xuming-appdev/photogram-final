@@ -19,15 +19,15 @@
         <label for="image_box">
           Image
         </label>
-
-        <input type="text" id="image_box" name="query_image">
+        <input type="file" id="browser_input" name="query_image" placeholder="Enter a URL for the image...">
       </div>
       <div>
         <label for="caption_box">
           Caption
         </label>
 
-        <textarea id="caption_box" name="query_caption" rows="3"></textarea>
+        <textarea id="caption_box" name="query_caption" rows="3" placeholder="Enter a caption for the photo...">
+    </textarea>
       </div>
 
     
@@ -88,7 +88,7 @@
 
 
         <td>
-          <%= a_photo.owner_id %>
+          <%= a_photo.poster.username %>
         </td>
 
         <td>
