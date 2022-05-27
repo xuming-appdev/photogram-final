@@ -18,7 +18,7 @@
       Add a new photo
     </h2>
 
-    <form action="/insert_photo" method="post">
+    <form action="/insert_photo" method="post" class="form-horizontal" enctype="multipart/form-data">
      <div>
         <label for="image_box">
           Image
@@ -81,9 +81,10 @@
       </tr>
 
       <% @list_of_photos.each do |a_photo| %>
+<%if a_photo.poster.private == false%>
       <tr>
         <td>
-           <img src="<%=a_photo.image%>">
+           <img src="<%=a_photo.image%>" class="img-responsive">
         </td>
 
         <td>
@@ -109,6 +110,7 @@
           </a>
         </td>
       </tr>
+      <%end%>
       <% end %>
     </table>
   </div>
