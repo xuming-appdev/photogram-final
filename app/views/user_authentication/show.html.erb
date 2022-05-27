@@ -45,7 +45,7 @@
   </ul>
 </nav>
 
-<h2>Own photos (???)</h2>
+<h2>Own photos (<%=@the_user.own_photos.count%>)</h2>
 
 
 <table border="1">
@@ -73,30 +73,34 @@
     <th></th>
   </tr>
 
+<% @the_user.own_photos.each do |a_photo|%>
+
+
 <tr>
     <td>
-      <img src="https://robohash.org/atharumblanditiis">
+      <img src="<%=a_photo.image%>">
     </td>
 
     <td>
-      <%=@the_user.username%>
+      <%=a_photo.poster.username%>
     </td>
 
     <td>
-      <%=@the_user.username%>
+      <%=a_photo.caption%>
     </td>
 
     <td>
-      almost 5 years ago
+       <%= time_ago_in_words(a_photo.created_at) %> ago
     </td>
 
     <td>
-      6
+      <%=a_photo.likes.count%>
     </td>
 
     <td>
-      <a href="/photos/747">
+      <a href="/photos/<%=a_photo.id%>">
         Show details
       </a>
     </td>
   </tr>
+  <%end%>
