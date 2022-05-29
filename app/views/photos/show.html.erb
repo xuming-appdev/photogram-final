@@ -59,20 +59,37 @@
       </dd>
 
  <dt>Add a fan</dt>
-  <dd>
 
+  <dd>
     <form action="/insert_like" method="post">
-      <input type="hidden" value="<%@the_photo.id%>" name="query_photo_id">
-      <input type="hidden" value="777" name="query_fan_id">
+      <input type="hidden" value="<%=@the_photo.id%>" name="query_photo_id">
       <button>Like</button>
     </form>
   </dd>
 
+  <dd>
+
+      <a href="/delete_like/<%=@the_photo.id%>">
+        Unlike
+      </a>
+  </dd>
 
 
+<%if session.fetch(:user_id)==@the_photo.owner.id%>
 <dt>
 Edit photo
 </dt>
+<dd>
+    <form action="/modify_photo/<%=@the_photo.id%>" method="post">
+      <label for="browser_image">Image URL</label>
+      <input type="file" id="browser_input" name="query_image" value="<%=@the_photo.image%>"  placeholder="Enter a URL for the image...">
+    
+      <label for="browser_caption">Caption</label>
+      <textarea id="caption_box" name="query_caption" rows="3" placeholder="Enter a caption for the photo..."><%=@the_photo.caption%></textarea>
+    
+      <button>Update photo</button>
+    </form>
+  </dd>
 
  <dt>Delete photo</dt>
   <dd>
@@ -80,6 +97,7 @@ Edit photo
       Delete this photo
     </a>
   </dd>
+  <%end%>
 </dl>
 
 
@@ -126,12 +144,9 @@ Edit photo
 
  <h3>Add a new comment</h3>
 
-<form action="/insert_comment">
-  <label for="browser_photo_id"></label>
-  <input id="browser_photo_id" type="hidden" value="<%= @the_photo.id%>" name="query_photo_id">
-
-  <label for="browser_author_id"></label>
-  <input id="browser_author_id" type="hidden" name="query_author_id">
+<form action="/insert_comment" method="post">
+  
+  <input type="hidden" value="<%=@the_photo.id%>" name="query_photo_id">
 
   <label for="browser_comment">Comment</label>
   <textarea id="browser_comment" name="query_body" placeholder="Enter a comment..."></textarea>
