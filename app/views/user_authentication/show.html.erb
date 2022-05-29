@@ -28,18 +28,19 @@ Pending follow requests
   <dt>Following</dt>
   <dd><%=@the_user.leaders.count%></dd>
 
-  <%if session.fetch(:user_id)==@the_user.id%>   
+<%if session.fetch(:user_id)==@the_user.id%>   
 <dt>Edit user</dt>
 <div>
-<form action="/modify_user" method="post">
-<dt>Username</dt>
-<input type="text" name="query_username" value="98">
-<dt>Private?</dt>
-<input type="checkbox" name="query_private" value="98">
-            <button>
-              Update User
-            </button>
-          </form>
+ <form action="/modify_user" method="post">
+      <label for="browser_username">Username</label>
+      <input id="browser_username" type="text" name="query_username" placeholder="Enter a username..."
+        value="<%=session.fetch(:user_id)%>">
+
+      <label for="browser_private">Private?</label>
+      <input id="browser_private" type="checkbox" name="query_private" >
+
+      <button>Update user</button>
+      </form>
     </div>
 <%end%>
 

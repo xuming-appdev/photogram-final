@@ -27,7 +27,7 @@
 
          <td>
 
-         <% if a_user.private==true%>
+<% if a_user.private==true%>
          Yes
 <%else%>
 No
@@ -36,19 +36,17 @@ No
 
 <td>
 <%if session.fetch(:user_id)!=nil%>   
+
 <form action="/insert_follow_request" method="post">
 <input type="hidden" name="query_recipient_id" value="<%a_user.id%>">
- <input type="hidden" name="query_sender_id" value="<%session.fetch(:user_id)%>">
- <input type="hidden" name="query_status" value="195">
+<button>
+Follow
+</button>
+</form>
 
-              <button>
-                Follow
-              </button>
-            </form>
-      <%end%>
-      </td>
+</td>
 
-        <td>
+<td>
 
     <%if session.fetch(:user_id)!=nil%>   
     <% if a_user.private!=true%>
@@ -67,5 +65,6 @@ No
         </td>
       </tr>
       <% end %>
-
+     
+<%end%>
 </hr>
