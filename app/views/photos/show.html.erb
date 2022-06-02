@@ -69,12 +69,14 @@
     </form>
   </dd>
 
+<%if Like.where({:fan_id=>session.fetch(:user_id),:photo_id=>@the_photo.id}).at(0)!=nil%>
   <dd>
 
-      <a href="/delete_like/<%=@the_photo.id%>">
-        Unlike
+      <a href="/delete_like/<%=Like.where({:fan_id=>session.fetch(:user_id),:photo_id=>@the_photo.id}).at(0).id%>">
+      Unlike
       </a>
   </dd>
+  <%end%>
 
 
 <%if session.fetch(:user_id)==@the_photo.owner.id%>

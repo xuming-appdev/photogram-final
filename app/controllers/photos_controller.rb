@@ -8,6 +8,8 @@ class PhotosController < ApplicationController
   end
 
   def show
+
+    if session.fetch(:user_id)!=nil
     the_id = params.fetch("path_id")
 
     matching_photos = Photo.where({ :id => the_id })
@@ -15,6 +17,9 @@ class PhotosController < ApplicationController
     @the_photo = matching_photos.at(0)
 
     render({ :template => "photos/show.html.erb" })
+    else
+    redirect_to("/user_sign_in", { :notice => "You have to sign in first."} )
+    end 
   end
 
   def create

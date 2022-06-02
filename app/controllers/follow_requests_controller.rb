@@ -18,10 +18,19 @@ class FollowRequestsController < ApplicationController
   end
 
   def create
+
+  
     the_follow_request = FollowRequest.new
     the_follow_request.recipient_id = params.fetch("query_recipient_id")
     the_follow_request.sender_id = session.fetch(:user_id)
     #the_follow_request.status = params.fetch("query_status")
+
+recipient = User.where(:id=>the_follow_request.recipient_id).at(0)
+if recipient.private == true
+the_follow_request.status = "pending"
+else
+  the_follow_request.status = "accepted"
+end 
 
     if the_follow_request.valid?
       the_follow_request.save
